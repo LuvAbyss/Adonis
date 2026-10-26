@@ -74,12 +74,16 @@ void main() {
     await ZipUtils.compress(archive, [], [images],
         filesByArchivePath: {'logs/Video/clip.mp4': source.path});
 
-    final entries = ZipDecoder()
-        .decodeStream(InputFileStream(archive))
-        .where((entry) => entry.isFile);
-    expect(entries, hasLength(2));
-    expect(entries.map((entry) => entry.compression),
-        everyElement(CompressionType.none));
+    final input = InputFileStream(archive);
+    try {
+      final entries =
+          ZipDecoder().decodeStream(input).where((entry) => entry.isFile);
+      expect(entries, hasLength(2));
+      expect(entries.map((entry) => entry.compression),
+          everyElement(CompressionType.none));
+    } finally {
+      await input.close();
+    }
   });
 
   test('a large file is zipped and extracted without being held in memory',

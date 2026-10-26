@@ -1,7 +1,7 @@
 {
     "dailyReminderTitle": "記錄今天！",
     "streakSinceBadDay": "{count, plural, other{距離上次糟糕的一天已過去 {count}}}",
-    "appTitle": "Daily You",
+    "appTitle": "Adonis",
     "dailyReminderDescription": "寫下我的日常紀錄…",
     "pageHomeTitle": "主頁",
     "flashbacksTitle": "往日重現",

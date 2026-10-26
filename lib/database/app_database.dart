@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Additional terms under GPLv3 section 7 apply; see ADDITIONAL_TERMS.md.
 
+import 'package:daily_you/app_locale.dart';
+
 import 'dart:io';
 
 import 'package:daily_you/database/attachment_storage.dart';
@@ -193,10 +195,12 @@ class AppDatabase {
   Future<bool> _validateSqliteDatabase(String path) async {
     try {
       final db = await openDatabase(path, readOnly: true);
-      final result = await db.rawQuery("PRAGMA integrity_check;");
-      await db.close();
-
-      return result.first.values.first == "ok";
+      try {
+        final result = await db.rawQuery("PRAGMA integrity_check;");
+        return result.first.values.first == "ok";
+      } finally {
+        await db.close();
+      }
     } catch (error, stackTrace) {
       _logger.warning(
           'Database integrity check failed for $path', error, stackTrace);
@@ -402,17 +406,7 @@ CREATE TABLE $attachmentsTable (
 
   @visibleForTesting
   Future<void> createWelcomeEntry() async {
-    final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
-    Locale locale;
-    if (AppLocalizations.delegate.isSupported(deviceLocale)) {
-      locale = deviceLocale;
-    } else {
-      final langOnly = Locale(deviceLocale.languageCode);
-      locale = AppLocalizations.delegate.isSupported(langOnly)
-          ? langOnly
-          : const Locale('en');
-    }
-    final l10n = await AppLocalizations.delegate.load(locale);
+    final l10n = await AppLocalizations.delegate.load(effectiveAppLocale());
     final now = DateTime.now();
 
     final welcomeEntry = await EntriesProvider.instance.add(

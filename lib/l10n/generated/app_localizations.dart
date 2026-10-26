@@ -165,7 +165,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'Daily You'**
+  /// **'Adonis'**
   String get appTitle;
 
   /// No description provided for @dailyReminderTitle.
@@ -1245,7 +1245,7 @@ abstract class AppLocalizations {
   /// No description provided for @welcomeLogBodyText.
   ///
   /// In en, this message translates to:
-  /// **'## Welcome to Daily You\n\n> Every day is worth remembering, capture it!\n\n**Daily You** is free, [open source](https://github.com/Demizo/Daily_You), and community supported. Built around the belief that your diary should be yours, not a product:\n\n- No ads\n- No locked features\n- No tracking or data collection\n\nWhether you\'re journaling, reflecting, or just noting what made you smile, **Daily You** gives you a private space that\'s _truly your own_.'**
+  /// **'## Welcome to Adonis\n\n> Every day is worth remembering, capture it!\n\n**Adonis** is free, [open source](https://github.com/Demizo/Daily_You), and community supported. Built around the belief that your diary should be yours, not a product:\n\n- No ads\n- No locked features\n- No tracking or data collection\n\nWhether you\'re journaling, reflecting, or just noting what made you smile, **Adonis** gives you a private space that\'s _truly your own_.'**
   String get welcomeLogBodyText;
 
   /// No description provided for @settingsStorageTitle.
@@ -1943,6 +1943,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to record audio!'**
   String get recorderErrorDescription;
+
+  /// No description provided for @modifiedVersionNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Adonis is a modified version of Daily You by Demizo and contributors, not the official app. Licensed under GPL-3.0 with the original additional terms.'**
+  String get modifiedVersionNotice;
 }
 
 class _AppLocalizationsDelegate

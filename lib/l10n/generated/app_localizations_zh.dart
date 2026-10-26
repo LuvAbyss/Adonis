@@ -9,7 +9,7 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get appTitle => 'Daily You';
+  String get appTitle => 'Adonis';
 
   @override
   String get dailyReminderTitle => '记得留下今日日迹！';
@@ -1029,6 +1029,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get recorderErrorDescription => '录制音频失败！';
+
+  @override
+  String get modifiedVersionNotice =>
+      'Adonis is a modified version of Daily You by Demizo and contributors, not the official app. Licensed under GPL-3.0 with the original additional terms.';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -1036,7 +1040,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   AppLocalizationsZhHant() : super('zh_Hant');
 
   @override
-  String get appTitle => 'Daily You';
+  String get appTitle => 'Adonis';
 
   @override
   String get dailyReminderTitle => '記錄今天！';

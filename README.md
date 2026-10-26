@@ -1,3 +1,13 @@
+# Adonis — Nhật ký tiếng Việt
+
+Adonis is a modified version of [Daily You](https://github.com/demizo/daily_you), originally by Demizo and contributors. It is not the official Daily You application. Original copyright notices, GPL-3.0 licensing, and [additional terms](ADDITIONAL_TERMS.md) are retained.
+
+See [hướng dẫn tiếng Việt, build và kiểm thử](README.vi.md). The Windows build and Vietnamese localization are maintained in this repository. Android application ID: `io.github.luvabyss.adonis`.
+
+---
+
+## Upstream project documentation
+
 <p align="center">
 <img width="500" src="assets/banner.gif" alt="Daily You Logo">
 </p>

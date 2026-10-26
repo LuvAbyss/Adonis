@@ -6,6 +6,7 @@ import 'package:daily_you/config_provider.dart';
 import 'package:daily_you/custom_locale_delegates.dart';
 import 'package:daily_you/time_manager.dart';
 import 'package:daily_you/utils/jalali_calendar_delegate.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart' show NumberFormat;
 import 'package:material_ui/material_ui.dart';
@@ -69,6 +70,9 @@ void main() {
     Future<DateTime?> pick(WidgetTester tester,
         {required Future<void> Function() interact}) async {
       await ConfigProvider.instance.set(Settings.calendarSystem, 'jalali');
+      // This widget test changes an in-memory setting only; do not start real
+      // file I/O from a debounce timer in the fake-async widget-test clock.
+      EasyDebounce.cancel('save-config');
       DateTime? picked;
       await tester.pumpWidget(MaterialApp(
         localizationsDelegates: appLocalizationsDelegates,

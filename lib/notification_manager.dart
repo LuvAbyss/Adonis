@@ -3,6 +3,10 @@
 // Additional terms under GPLv3 section 7 apply; see ADDITIONAL_TERMS.md.
 
 import 'dart:io';
+import 'dart:ui' show PlatformDispatcher;
+import 'package:daily_you/app_locale.dart';
+import 'package:daily_you/config_provider.dart';
+import 'package:daily_you/l10n/generated/app_localizations.dart';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:daily_you/main.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -51,10 +55,14 @@ class NotificationManager {
 
     _notifications = flutterLocalNotificationsPlugin;
 
+    final l10n = lookupAppLocalizations(resolveAppLocale(
+        ConfigProvider.instance.getOverrideLanguage() ??
+            PlatformDispatcher.instance.locale));
     await _notifications!.initialize(
-        settings: const InitializationSettings(
+        settings: InitializationSettings(
             android: AndroidInitializationSettings('@drawable/ic_notification'),
-            linux: LinuxInitializationSettings(defaultActionName: 'Log Today')),
+            linux: LinuxInitializationSettings(
+                defaultActionName: l10n.dailyReminderTitle)),
         onDidReceiveNotificationResponse: backupCancelBackgroundHandler,
         onDidReceiveBackgroundNotificationResponse:
             backupCancelBackgroundHandler);

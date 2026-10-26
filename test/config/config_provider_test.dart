@@ -56,6 +56,7 @@ void main() {
   });
 
   tearDown(() async {
+    await configProvider.flushConfig();
     EasyDebounce.cancelAll();
     await directory.delete(recursive: true);
   });

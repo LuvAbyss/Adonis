@@ -78,8 +78,8 @@ class Settings {
       Setting<String>("videoQualityLevel", VideoQuality.medium);
   static const suppressLargeAttachmentWarning =
       Setting<bool>("suppressLargeAttachmentWarning", false);
-  static const overrideLanguage =
-      Setting<Map<String, dynamic>?>("overrideLanguage", null);
+  static const overrideLanguage = Setting<Map<String, dynamic>?>(
+      "overrideLanguage", {'languageCode': 'vi'});
   static const showFlashbacks = Setting<bool>("showFlashbacks", true);
   static const excludeBadDaysFromFlashbacks =
       Setting<bool>("excludeBadDaysFromFlashbacks", false);
@@ -286,6 +286,7 @@ class ConfigProvider with ChangeNotifier {
   };
 
   T get<T>(Setting<T> setting) {
+    if (!_config.containsKey(setting.key)) return setting.defaultValue;
     final value = _config[setting.key];
     return value is T ? value : setting.defaultValue;
   }
@@ -486,18 +487,30 @@ class ConfigProvider with ChangeNotifier {
     }
   }
 
+  Future<void> _pendingConfigWrite = Future.value();
+
   Future<void> writeConfig() async {
-    EasyDebounce.debounce("save-config", Duration(seconds: 1), () async {
+    EasyDebounce.debounce("save-config", Duration(seconds: 1), () {
       final filteredConfig = Map<String, dynamic>.from(_config)
         ..removeWhere((key, _) => _secureKeys.contains(key));
-
-      final tempFile = File('$configFilePath.tmp');
-
-      final jsonString = json.encode(filteredConfig);
-
-      await tempFile.writeAsString(jsonString, flush: true);
-      await tempFile.rename(configFilePath);
+      final targetPath = configFilePath;
+      // Serialize atomic replacements: Windows cannot rename a file while a
+      // previous write still has the temporary file open.
+      _pendingConfigWrite = _pendingConfigWrite.then((_) async {
+        final tempFile = File('$targetPath.tmp');
+        await tempFile.writeAsString(json.encode(filteredConfig), flush: true);
+        await tempFile.rename(targetPath);
+      }).catchError((Object error, StackTrace stackTrace) {
+        _logger.severe('Could not save config', error, stackTrace);
+      });
     });
+  }
+
+  /// Finish a scheduled save before releasing or moving the settings folder.
+  Future<void> flushConfig() async {
+    EasyDebounce.fire('save-config');
+    EasyDebounce.cancel('save-config');
+    await _pendingConfigWrite;
   }
 
   bool is24HourFormat() {

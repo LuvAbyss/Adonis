@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Additional terms under GPLv3 section 7 apply; see ADDITIONAL_TERMS.md.
 
+import 'package:daily_you/app_locale.dart';
+
 import 'dart:math';
 
 import 'package:daily_you/database/app_database.dart';
@@ -308,17 +310,7 @@ class TagsProvider with ChangeNotifier {
   }
 
   Future<void> createDefaultTags() async {
-    final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
-    Locale locale;
-    if (AppLocalizations.delegate.isSupported(deviceLocale)) {
-      locale = deviceLocale;
-    } else {
-      final langOnly = Locale(deviceLocale.languageCode);
-      locale = AppLocalizations.delegate.isSupported(langOnly)
-          ? langOnly
-          : const Locale('en');
-    }
-    final l10n = await AppLocalizations.delegate.load(locale);
+    final l10n = await AppLocalizations.delegate.load(effectiveAppLocale());
     final now = DateTime.now();
 
     final defaultTags = [

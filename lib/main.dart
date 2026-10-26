@@ -5,6 +5,9 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
+import 'dart:ui' show PlatformDispatcher;
+
+import 'package:daily_you/app_locale.dart';
 
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:daily_you/config_provider.dart';
@@ -127,12 +130,15 @@ void onThisDayCallbackDispatcher() async {
     if (hasOnThisDayEntries) {
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
           FlutterLocalNotificationsPlugin();
+      final l10n = lookupAppLocalizations(resolveAppLocale(
+          ConfigProvider.instance.getOverrideLanguage() ??
+              PlatformDispatcher.instance.locale));
       await flutterLocalNotificationsPlugin.initialize(
-          settings: const InitializationSettings(
+          settings: InitializationSettings(
               android:
                   AndroidInitializationSettings('@drawable/ic_notification'),
               linux: LinuxInitializationSettings(
-                  defaultActionName: 'On This Day')));
+                  defaultActionName: l10n.flashbackOnThisDay)));
 
       // Localized notification text is stored in SharedPreferences upon startup
       var prefs = await SharedPreferences.getInstance();
@@ -141,7 +147,7 @@ void onThisDayCallbackDispatcher() async {
 
       var androidDetails = AndroidNotificationDetails(
         'daily_you_on_this_day',
-        title ?? 'On This Day',
+        title ?? l10n.flashbackOnThisDay,
         icon: '@drawable/ic_notification',
         importance: Importance.defaultImportance,
         priority: Priority.defaultPriority,
@@ -176,12 +182,15 @@ void callbackDispatcher() async {
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
           FlutterLocalNotificationsPlugin();
 
+      final l10n = lookupAppLocalizations(resolveAppLocale(
+          ConfigProvider.instance.getOverrideLanguage() ??
+              PlatformDispatcher.instance.locale));
       await flutterLocalNotificationsPlugin.initialize(
-          settings: const InitializationSettings(
+          settings: InitializationSettings(
               android:
                   AndroidInitializationSettings('@drawable/ic_notification'),
-              linux:
-                  LinuxInitializationSettings(defaultActionName: 'Log Today')));
+              linux: LinuxInitializationSettings(
+                  defaultActionName: l10n.dailyReminderTitle)));
 
       // Localized notification text is stored in SharedPreferences upon startup
       var prefs = await SharedPreferences.getInstance();
@@ -190,7 +199,7 @@ void callbackDispatcher() async {
 
       var androidPlatformChannelSpecifics = AndroidNotificationDetails(
         'daily_you_reminder',
-        title ?? "Log Today!",
+        title ?? l10n.dailyReminderTitle,
         icon: '@drawable/ic_notification',
         importance: Importance.defaultImportance,
         priority: Priority.defaultPriority,
@@ -499,7 +508,7 @@ class _MainAppState extends State<MainApp> {
             child: MaterialApp(
                 onGenerateTitle: (context) =>
                     AppLocalizations.of(context)!.appTitle,
-                title: 'Daily You',
+                title: 'Adonis',
                 themeMode: themeModeProvider.themeMode,
                 debugShowCheckedModeBanner: false,
                 localizationsDelegates: <LocalizationsDelegate<dynamic>>[
@@ -516,15 +525,7 @@ class _MainAppState extends State<MainApp> {
                   final override = configProvider.getOverrideLanguage();
                   if (override != null) return override;
 
-                  if (locale != null) {
-                    for (final supported in supportedLocales) {
-                      if (supported.languageCode == locale.languageCode) {
-                        return supported;
-                      }
-                    }
-                  }
-
-                  return const Locale('en');
+                  return resolveAppLocale(locale);
                 },
                 theme: lightTheme,
                 darkTheme: darkTheme,

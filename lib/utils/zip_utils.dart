@@ -23,10 +23,22 @@ class ZipUtils {
 
     var rxPort = ReceivePort();
     var completer = Completer<void>();
+    SendPort? cancelPort;
 
     rxPort.listen((data) {
-      if (data is String && data == _encodeArchiveDone) {
-        if (!completer.isCompleted) completer.complete();
+      if (data is SendPort) {
+        cancelPort = data;
+        if (cancellationToken?.isCancelled ?? false) cancelPort!.send(null);
+      } else if (data == _encodeArchiveDone ||
+          data == _encodeArchiveCancelled) {
+        if (!completer.isCompleted) {
+          if (data == _encodeArchiveCancelled ||
+              (cancellationToken?.isCancelled ?? false)) {
+            completer.completeError(BackupCancelledException());
+          } else {
+            completer.complete();
+          }
+        }
       } else if (data is String) {
         if (!completer.isCompleted) completer.completeError(Exception(data));
       } else {
@@ -34,19 +46,22 @@ class ZipUtils {
       }
     });
 
-    final isolate = await Isolate.spawn(encodeArchive, {
-      "outputFile": outputFile,
-      "inputFiles": inputFiles,
-      "inputFolders": inputFolders,
-      "filesByArchivePath": filesByArchivePath,
-      "port": rxPort.sendPort,
-    });
+    final exitPort = ReceivePort();
+    final exited = exitPort.first;
+    final isolate = await Isolate.spawn(
+        encodeArchive,
+        {
+          "outputFile": outputFile,
+          "inputFiles": inputFiles,
+          "inputFolders": inputFolders,
+          "filesByArchivePath": filesByArchivePath,
+          "port": rxPort.sendPort,
+        },
+        onExit: exitPort.sendPort);
 
-    cancellationToken?.attachIsolate(isolate, () {
-      if (!completer.isCompleted) {
-        completer.completeError(BackupCancelledException());
-      }
-    });
+    // Let the worker close its streams before acknowledging cancellation.
+    // Killing an isolate skips finally blocks and leaves Windows files locked.
+    cancellationToken?.attachNativeCancel(() => cancelPort?.send(null));
 
     try {
       await completer.future;
@@ -54,6 +69,10 @@ class ZipUtils {
       cancellationToken?.detach();
       rxPort.close();
       isolate.kill(priority: Isolate.immediate);
+      // kill() only requests shutdown. Windows must see the worker finish
+      // before callers can remove or replace the archive and source files.
+      await exited;
+      exitPort.close();
     }
   }
 
@@ -67,23 +86,33 @@ class ZipUtils {
       }
     });
 
-    await compute(decodeArchive, {
-      "inputFile": inputFile,
-      "outputFolder": outputFolder,
-      "port": rxPort.sendPort,
-    });
-
-    rxPort.close();
+    try {
+      await compute(decodeArchive, {
+        "inputFile": inputFile,
+        "outputFolder": outputFolder,
+        "port": rxPort.sendPort,
+      });
+    } finally {
+      rxPort.close();
+    }
   }
 
   static const _encodeArchiveDone = 'done';
+  static const _encodeArchiveCancelled = 'cancelled';
 
   static Future<void> encodeArchive(Map<String, dynamic> args) async {
     SendPort sendPort = args["port"];
+    final cancellation = ReceivePort();
+    var cancelled = false;
+    cancellation.listen((_) => cancelled = true);
+    sendPort.send(cancellation.sendPort);
+    var status = _encodeArchiveDone;
+    ZipFileEncoder? encoder;
     try {
-      var encoder = ZipFileEncoder();
+      encoder = ZipFileEncoder();
       encoder.createWithStream(OutputFileStream(args["outputFile"]));
       for (final String file in args["inputFiles"]) {
+        if (cancelled) throw BackupCancelledException();
         await _addStored(encoder, File(file), basename(file));
       }
 
@@ -105,25 +134,37 @@ class ZipUtils {
 
       for (final (index, folder) in folders.indexed) {
         await _addFolder(encoder, folder, folderFiles[index],
-            (fraction) => report(fraction, folderBytes[index]));
+            (fraction) => report(fraction, folderBytes[index]),
+            isCancelled: () => cancelled);
         finishedBytes += folderBytes[index];
         report(0, 0);
       }
       for (final (index, entry) in filesByArchivePath.entries.indexed) {
+        if (cancelled) throw BackupCancelledException();
         await _addStored(encoder, File(entry.value), entry.key);
         finishedBytes += fileBytes[index];
         report(0, 0);
       }
-      await encoder.close();
-      sendPort.send(_encodeArchiveDone);
+    } on BackupCancelledException {
+      status = _encodeArchiveCancelled;
     } catch (error) {
-      sendPort.send(error.toString());
+      status = error.toString();
+    } finally {
+      try {
+        await encoder?.close();
+      } catch (error) {
+        status = error.toString();
+      }
+      cancellation.close();
     }
+    sendPort.send(status);
   }
 
   static Future<void> _addFolder(ZipFileEncoder encoder, String folder,
-      List<File> files, void Function(double fraction) onProgress) async {
+      List<File> files, void Function(double fraction) onProgress,
+      {required bool Function() isCancelled}) async {
     for (final (index, file) in files.indexed) {
+      if (isCancelled()) throw BackupCancelledException();
       final relativeParts = split(relative(file.path, from: folder));
       await _addStored(
           encoder, file, posix.joinAll([basename(folder), ...relativeParts]));
@@ -167,30 +208,35 @@ class ZipUtils {
 
   static Future<void> decodeArchive(Map<String, dynamic> args) async {
     SendPort sendPort = args["port"];
-    var decoder = ZipDecoder().decodeStream(InputFileStream(args["inputFile"]));
+    final input = InputFileStream(args["inputFile"]);
+    try {
+      var decoder = ZipDecoder().decodeStream(input);
 
-    // Track number of files for progress indication
-    var totalFileCount = decoder.numberOfFiles();
-    var processedFileCount = 0;
+      // Track number of files for progress indication
+      var totalFileCount = decoder.numberOfFiles();
+      var processedFileCount = 0;
 
-    for (final entry in decoder) {
-      if (entry.isFile) {
-        final file = File(_pathInside(args["outputFolder"], entry.name));
-        await file.create(recursive: true);
-        final output = OutputFileStream(file.path);
-        try {
-          entry.writeContent(output);
-        } finally {
-          await output.close();
+      for (final entry in decoder) {
+        if (entry.isFile) {
+          final file = File(_pathInside(args["outputFolder"], entry.name));
+          await file.create(recursive: true);
+          final output = OutputFileStream(file.path);
+          try {
+            entry.writeContent(output);
+          } finally {
+            await output.close();
+          }
+
+          // Updates status
+          processedFileCount += 1;
+          sendPort.send((processedFileCount / totalFileCount) * 100);
+        } else {
+          await Directory(_pathInside(args["outputFolder"], entry.name))
+              .create(recursive: true);
         }
-
-        // Updates status
-        processedFileCount += 1;
-        sendPort.send((processedFileCount / totalFileCount) * 100);
-      } else {
-        await Directory(_pathInside(args["outputFolder"], entry.name))
-            .create(recursive: true);
       }
+    } finally {
+      await input.close();
     }
   }
 }

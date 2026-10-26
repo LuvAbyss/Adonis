@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get appTitle => 'Daily You';
+  String get appTitle => 'Adonis';
 
   @override
   String get dailyReminderTitle => 'Registe hoje!';
@@ -667,7 +667,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get welcomeLogBodyText =>
-      '## Welcome to Daily You\n\n> Every day is worth remembering, capture it!\n\n**Daily You** is free, [open source](https://github.com/Demizo/Daily_You), and community supported. Built around the belief that your diary should be yours, not a product:\n\n- No ads\n- No locked features\n- No tracking or data collection\n\nWhether you\'re journaling, reflecting, or just noting what made you smile, **Daily You** gives you a private space that\'s _truly your own_.';
+      '## Welcome to Adonis\n\n> Every day is worth remembering, capture it!\n\n**Adonis** is free, [open source](https://github.com/Demizo/Daily_You), and community supported. Built around the belief that your diary should be yours, not a product:\n\n- No ads\n- No locked features\n- No tracking or data collection\n\nWhether you\'re journaling, reflecting, or just noting what made you smile, **Adonis** gives you a private space that\'s _truly your own_.';
 
   @override
   String get settingsStorageTitle => 'Armazenamento';
@@ -1047,6 +1047,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get recorderErrorDescription => 'Failed to record audio!';
+
+  @override
+  String get modifiedVersionNotice =>
+      'Adonis is a modified version of Daily You by Demizo and contributors, not the official app. Licensed under GPL-3.0 with the original additional terms.';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).

@@ -40,6 +40,10 @@ class _AboutSettingsState extends State<AboutSettings> {
       ),
       body: ListView(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(AppLocalizations.of(context)!.modifiedVersionNotice),
+          ),
           GestureDetector(
             child: SettingsIconAction(
                 title: AppLocalizations.of(context)!.settingsVersion,
@@ -47,7 +51,7 @@ class _AboutSettingsState extends State<AboutSettings> {
                 icon: Icon(Icons.open_in_new_rounded),
                 onPressed: () async {
                   await launchUrl(
-                      Uri.https("github.com", "/Demizo/Daily_You/releases"),
+                      Uri.https("github.com", "/LuvAbyss/Adonis/releases"),
                       mode: LaunchMode.externalApplication);
                 }),
             onTap: () async {
@@ -76,10 +80,10 @@ class _AboutSettingsState extends State<AboutSettings> {
           ),
           SettingsIconAction(
               title: AppLocalizations.of(context)!.settingsSourceCode,
-              hint: "github.com/Demizo/Daily_You",
+              hint: "github.com/LuvAbyss/Adonis",
               icon: Icon(Icons.open_in_new_rounded),
               onPressed: () async {
-                await launchUrl(Uri.https("github.com", "/Demizo/Daily_You"),
+                await launchUrl(Uri.https("github.com", "/LuvAbyss/Adonis"),
                     mode: LaunchMode.externalApplication);
               }),
           SettingsIconAction(
@@ -123,11 +127,11 @@ class _AboutSettingsState extends State<AboutSettings> {
           ),
           SettingsIconAction(
               title: AppLocalizations.of(context)!.errorReport,
-              hint: "github.com/Demizo/Daily_You/issues",
+              hint: "github.com/LuvAbyss/Adonis/issues",
               icon: Icon(Icons.open_in_new_rounded),
               onPressed: () async {
                 await launchUrl(
-                    Uri.https("github.com", "/Demizo/Daily_You/issues"),
+                    Uri.https("github.com", "/LuvAbyss/Adonis/issues"),
                     mode: LaunchMode.externalApplication);
               }),
         ],

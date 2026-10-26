@@ -9,7 +9,7 @@ class AppLocalizationsCa extends AppLocalizations {
   AppLocalizationsCa([String locale = 'ca']) : super(locale);
 
   @override
-  String get appTitle => 'Daily You';
+  String get appTitle => 'Adonis';
 
   @override
   String get dailyReminderTitle => 'Registreu el vostre dia!';
@@ -1056,4 +1056,8 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get recorderErrorDescription => 'Failed to record audio!';
+
+  @override
+  String get modifiedVersionNotice =>
+      'Adonis is a modified version of Daily You by Demizo and contributors, not the official app. Licensed under GPL-3.0 with the original additional terms.';
 }

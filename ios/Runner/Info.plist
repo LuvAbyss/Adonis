@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Response Test</string>
+	<string>Adonis</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,6 +24,14 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Adonis cần truy cập máy ảnh để chụp ảnh và quay video cho bài nhật ký của bạn.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Adonis cần truy cập thư viện ảnh để thêm ảnh và video vào bài nhật ký của bạn.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Adonis cần truy cập micrô để ghi âm và quay video cho bài nhật ký của bạn.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Adonis dùng Face ID để mở khóa nhật ký theo lựa chọn của bạn.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

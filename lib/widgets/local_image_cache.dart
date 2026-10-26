@@ -208,7 +208,7 @@ void imageResizerIsolate(Map<String, dynamic> args) async {
           }
         } else {
           final cmd = img.Command()
-            ..decodeJpgFile(join(imgFolderPath, originalPath))
+            ..decodeImageFile(join(imgFolderPath, originalPath))
             ..copyResize(width: width, interpolation: img.Interpolation.average)
             ..encodeJpgFile(join(tempImgFolderPath, "$key.jpg"), quality: 85);
           await cmd.executeThread();

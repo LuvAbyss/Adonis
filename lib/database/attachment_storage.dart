@@ -139,7 +139,7 @@ class AttachmentStorage {
 
   Future<String> getInternalFolder(AttachmentType type) async {
     final basePath = await getApplicationSupportDirectory();
-    final directory = Directory('${basePath.path}/${type.folderName}');
+    final directory = Directory(join(basePath.path, type.folderName));
     if (!directory.existsSync()) directory.createSync(recursive: true);
     return directory.path;
   }

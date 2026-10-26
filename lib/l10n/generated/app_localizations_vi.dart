@@ -9,59 +9,59 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get appTitle => 'Daily You';
+  String get appTitle => 'Adonis';
 
   @override
-  String get dailyReminderTitle => 'Ghi chép hôm nay!';
+  String get dailyReminderTitle => 'Viết nhật ký hôm nay!';
 
   @override
   String get dailyReminderDescription =>
-      'Hãy ghi chép nhật ký hàng ngày của bạn…';
+      'Hãy dành chút thời gian ghi lại ngày hôm nay…';
 
   @override
   String get actionTakePhoto => 'Chụp ảnh';
 
   @override
-  String get actionTakeVideo => 'Take video';
+  String get actionTakeVideo => 'Quay video';
 
   @override
-  String get actionRecordAudio => 'Record audio';
+  String get actionRecordAudio => 'Ghi âm';
 
   @override
-  String get actionAddImage => 'Add image';
+  String get actionAddImage => 'Thêm ảnh';
 
   @override
-  String get actionAddVideo => 'Add video';
+  String get actionAddVideo => 'Thêm video';
 
   @override
-  String get actionAddAudio => 'Add audio';
+  String get actionAddAudio => 'Thêm âm thanh';
 
   @override
   String get actionToday => 'Hôm nay';
 
   @override
-  String get actionOtherDay => 'Hôm trước';
+  String get actionOtherDay => 'Ngày khác';
 
   @override
   String get pageHomeTitle => 'Trang chủ';
 
   @override
-  String get jumpToMonthTitle => 'Chuyển sang tháng';
+  String get jumpToMonthTitle => 'Chuyển đến tháng';
 
   @override
-  String get jumpToLogTitle => 'Chuyển sang bản ghi';
+  String get jumpToLogTitle => 'Chuyển đến bài nhật ký';
 
   @override
-  String get flashbacksTitle => 'Hồi tưởng';
+  String get flashbacksTitle => 'Kỷ niệm';
 
   @override
-  String get settingsFlashbacksExcludeBadDays => 'Loại trừ những ngày tệ';
+  String get settingsFlashbacksExcludeBadDays => 'Ẩn những ngày buồn';
 
   @override
-  String get flaskbacksEmpty => 'Chưa có cảnh hồi tưởng nào cả…';
+  String get flaskbacksEmpty => 'Chưa có kỷ niệm…';
 
   @override
-  String get flashbackGoodDay => 'Một Ngày Tốt lành';
+  String get flashbackGoodDay => 'Một ngày vui';
 
   @override
   String get flashbackRandomDay => 'Một ngày ngẫu nhiên';
@@ -71,8 +71,7 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count Weeks Ago',
-      one: '$count Week Ago',
+      other: '$count tuần trước',
     );
     return '$_temp0';
   }
@@ -82,8 +81,7 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count Months Ago',
-      one: '$count Month Ago',
+      other: '$count tháng trước',
     );
     return '$_temp0';
   }
@@ -93,28 +91,26 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count Years Ago',
-      one: '$count Year Ago',
+      other: '$count năm trước',
     );
     return '$_temp0';
   }
 
   @override
-  String get flashbackOnThisDay => 'On This Day';
+  String get flashbackOnThisDay => 'Ngày này năm xưa';
 
   @override
   String get pageGalleryTitle => 'Thư viện';
 
   @override
-  String get searchLogsHint => 'Tìm kiếm Nhật ký…';
+  String get searchLogsHint => 'Tìm bài nhật ký…';
 
   @override
   String logCount(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count logs',
-      one: '$count log',
+      other: '$count bài nhật ký',
     );
     return '$_temp0';
   }
@@ -124,8 +120,7 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count days',
-      one: '$count day',
+      other: '$count ngày',
     );
     return '$_temp0';
   }
@@ -135,17 +130,16 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count words',
-      one: '$count word',
+      other: '$count từ',
     );
     return '$_temp0';
   }
 
   @override
-  String get noLogs => 'Không có nhật ký…';
+  String get noLogs => 'Chưa có bài nhật ký…';
 
   @override
-  String get noResults => 'No Results…';
+  String get noResults => 'Không có kết quả…';
 
   @override
   String get sortDateTitle => 'Ngày';
@@ -160,7 +154,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get pageStatisticsTitle => 'Thống kê';
 
   @override
-  String get statisticsNotEnoughData => 'Không đủ dữ liệu…';
+  String get statisticsNotEnoughData => 'Chưa đủ dữ liệu…';
 
   @override
   String get statisticsRangeOneMonth => '1 tháng';
@@ -172,47 +166,47 @@ class AppLocalizationsVi extends AppLocalizations {
   String get statisticsRangeOneYear => '1 năm';
 
   @override
-  String get statisticsRangeAllTime => 'Mọi thời gian';
+  String get statisticsRangeAllTime => 'Toàn bộ thời gian';
 
   @override
   String chartSummaryTitle(Object tag) {
-    return '$tag Summary';
+    return 'Tổng quan về $tag';
   }
 
   @override
   String chartByDayTitle(Object tag) {
-    return '$tag By Day';
+    return '$tag theo ngày';
   }
 
   @override
   String chartOverTimeTitle(Object tag) {
-    return '$tag Over Time';
+    return '$tag theo thời gian';
   }
 
   @override
-  String get chartGroupingLabel => 'Group by';
+  String get chartGroupingLabel => 'Nhóm theo';
 
   @override
-  String get chartGroupingDay => 'Day';
+  String get chartGroupingDay => 'Ngày';
 
   @override
-  String get chartGroupingWeek => 'Week';
+  String get chartGroupingWeek => 'Tuần';
 
   @override
-  String get chartGroupingMonth => 'Month';
+  String get chartGroupingMonth => 'Tháng';
 
   @override
-  String get chartGroupingYear => 'Year';
+  String get chartGroupingYear => 'Năm';
 
   @override
-  String get chartSmoothingLabel => 'Smoothing';
+  String get chartSmoothingLabel => 'Làm mượt biểu đồ';
 
   @override
   String streakCurrent(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Current Streak $count',
+      other: 'Chuỗi hiện tại: $count ngày',
     );
     return '$_temp0';
   }
@@ -222,7 +216,7 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Longest Streak $count',
+      other: 'Chuỗi dài nhất: $count ngày',
     );
     return '$_temp0';
   }
@@ -232,7 +226,7 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Great Days $count',
+      other: 'Số ngày tuyệt vời: $count',
     );
     return '$_temp0';
   }
@@ -242,7 +236,7 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Days Since a Bad Day $count',
+      other: 'Số ngày kể từ một ngày buồn: $count',
     );
     return '$_temp0';
   }
@@ -253,208 +247,208 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get errorExternalStorageAccessDescription =>
-      'If you are using network storage make sure the service is online and you have network access.\n\nOtherwise, the app may have lost permissions for the external folder. Go to settings, and reselect the external folder to grant access.\n\nWarning, changes will not be synced until you restore access to the external storage location!';
+      'Nếu bạn đang dùng bộ nhớ mạng, hãy bảo đảm dịch vụ đang hoạt động và thiết bị có kết nối mạng.\n\nỨng dụng cũng có thể đã mất quyền truy cập thư mục bên ngoài. Hãy mở Cài đặt và chọn lại thư mục để cấp quyền truy cập.\n\nLưu ý: Các thay đổi sẽ chưa được đồng bộ cho đến khi bạn khôi phục quyền truy cập vị trí lưu trữ bên ngoài!';
 
   @override
   String get errorExternalStorageAccessContinue =>
-      'Tiếp tục với Cơ sở dữ liệu cục bộ';
+      'Tiếp tục với cơ sở dữ liệu trên thiết bị';
 
   @override
-  String get databaseMigrationErrorTitle => 'Couldn\'t Move Your Data';
+  String get databaseMigrationErrorTitle => 'Không thể di chuyển dữ liệu';
 
   @override
   String get databaseMigrationErrorDescription =>
-      'Your entries are safe but couldn\'t be moved to the app\'s storage.\n\nTry again, and report the issue if it keeps happening.';
+      'Các bài nhật ký của bạn vẫn an toàn nhưng chưa thể chuyển vào bộ nhớ của ứng dụng.\n\nHãy thử lại và báo lỗi nếu sự cố vẫn tiếp diễn.';
 
   @override
-  String get databaseMigrationErrorRetry => 'Retry';
+  String get databaseMigrationErrorRetry => 'Thử lại';
 
   @override
-  String get databaseNewerErrorTitle => 'Update Required';
+  String get databaseNewerErrorTitle => 'Cần cập nhật ứng dụng';
 
   @override
   String get databaseNewerErrorDescription =>
-      'Your data was saved by a newer version of Daily You. This version can\'t open it safely. Update the app to continue.';
+      'Dữ liệu của bạn được lưu bằng phiên bản Daily You mới hơn. Phiên bản hiện tại không thể mở dữ liệu này an toàn. Hãy cập nhật ứng dụng để tiếp tục.';
 
   @override
-  String get errorReport => 'Report Issue';
+  String get errorReport => 'Báo lỗi';
 
   @override
-  String get lastModified => 'Modified';
+  String get lastModified => 'Đã chỉnh sửa';
 
   @override
-  String get writeSomethingHint => 'Write something…';
+  String get writeSomethingHint => 'Viết điều gì đó…';
 
   @override
-  String get titleHint => 'Title…';
+  String get titleHint => 'Tiêu đề…';
 
   @override
-  String get deleteLogTitle => 'Delete Log';
+  String get deleteLogTitle => 'Xóa bài nhật ký';
 
   @override
-  String get deleteLogDescription => 'Do you want to delete this log?';
+  String get deleteLogDescription => 'Bạn có muốn xóa bài nhật ký này không?';
 
   @override
-  String get deletePhotoTitle => 'Delete Photo';
+  String get deletePhotoTitle => 'Xóa ảnh';
 
   @override
-  String get deletePhotoDescription => 'Do you want to delete this photo?';
+  String get deletePhotoDescription => 'Bạn có muốn xóa ảnh này không?';
 
   @override
-  String get deleteAttachmentTitle => 'Delete Attachment';
+  String get deleteAttachmentTitle => 'Xóa tệp đính kèm';
 
   @override
   String get deleteAttachmentDescription =>
-      'Do you want to delete this attachment?';
+      'Bạn có muốn xóa tệp đính kèm này không?';
 
   @override
-  String get largeAttachmentWarningTitle => 'Large attachment';
+  String get largeAttachmentWarningTitle => 'Tệp đính kèm có dung lượng lớn';
 
   @override
   String get largeAttachmentWarningDescription =>
-      'This attachment is large and will increase your backup size.';
+      'Tệp đính kèm này có dung lượng lớn và sẽ làm tăng kích thước bản sao lưu.';
 
   @override
-  String get dontShowAgain => 'Don\'t show again';
+  String get dontShowAgain => 'Không hiển thị lại';
 
   @override
-  String get pageSettingsTitle => 'Settings';
+  String get pageSettingsTitle => 'Cài đặt';
 
   @override
-  String get settingsAppearanceTitle => 'Appearance';
+  String get settingsAppearanceTitle => 'Giao diện';
 
   @override
-  String get settingsTheme => 'Theme';
+  String get settingsTheme => 'Chủ đề';
 
   @override
-  String get themeSystem => 'System';
+  String get themeSystem => 'Theo hệ thống';
 
   @override
-  String get themeLight => 'Light';
+  String get themeLight => 'Sáng';
 
   @override
-  String get themeDark => 'Dark';
+  String get themeDark => 'Tối';
 
   @override
   String get themeAmoled => 'AMOLED';
 
   @override
-  String get settingsFirstDayOfWeek => 'First Day Of Week';
+  String get settingsFirstDayOfWeek => 'Ngày đầu tuần';
 
   @override
-  String get settingsCalendarSystem => 'Calendar System';
+  String get settingsCalendarSystem => 'Hệ lịch';
 
   @override
-  String get calendarSystemGregorian => 'Gregorian';
+  String get calendarSystemGregorian => 'Dương lịch';
 
   @override
-  String get calendarSystemJalali => 'Jalali';
+  String get calendarSystemJalali => 'Lịch Ba Tư (Jalali)';
 
   @override
-  String get settingsUseSystemAccentColor => 'Use System Accent Color';
+  String get settingsUseSystemAccentColor => 'Dùng màu nhấn của hệ thống';
 
   @override
-  String get settingsCustomAccentColor => 'Custom Accent Color';
+  String get settingsCustomAccentColor => 'Tùy chỉnh màu nhấn';
 
   @override
-  String get settingsShowMarkdownToolbar => 'Show Markdown Toolbar';
+  String get settingsShowMarkdownToolbar => 'Hiện thanh công cụ Markdown';
 
   @override
-  String get settingsShowFlashbacks => 'Show Flashbacks';
+  String get settingsShowFlashbacks => 'Hiện kỷ niệm';
 
   @override
-  String get settingsChangeMoodIcons => 'Thay đổi biểu tượng tâm trạng';
+  String get settingsChangeMoodIcons => 'Đổi biểu tượng tâm trạng';
 
   @override
   String get moodIconPrompt => 'Nhập một biểu tượng';
 
   @override
-  String get settingsFlashbacksViewLayout => 'Flashbacks View Layout';
+  String get settingsFlashbacksViewLayout => 'Bố cục kỷ niệm';
 
   @override
-  String get settingsGalleryViewLayout => 'Gallery View Layout';
+  String get settingsGalleryViewLayout => 'Bố cục thư viện';
 
   @override
-  String get settingsHideImagesInGallery => 'Hide Images In Gallery';
+  String get settingsHideImagesInGallery => 'Ẩn ảnh trong thư viện';
 
   @override
-  String get settingsHideImages => 'Hide Images';
+  String get settingsHideImages => 'Ẩn ảnh';
 
   @override
-  String get pageCalendarTitle => 'Calendar';
+  String get pageCalendarTitle => 'Lịch';
 
   @override
-  String get viewLayoutList => 'List';
+  String get viewLayoutList => 'Danh sách';
 
   @override
-  String get viewLayoutGrid => 'Grid';
+  String get viewLayoutGrid => 'Lưới';
 
   @override
-  String get settingsNotificationsTitle => 'Notifications';
+  String get settingsNotificationsTitle => 'Thông báo';
 
   @override
   String get settingsDailyReminderOnboarding =>
-      'Enable daily reminders to keep yourself consistent!';
+      'Bật lời nhắc hằng ngày để duy trì thói quen viết nhật ký!';
 
   @override
   String get settingsNotificationsPermissionsPrompt =>
-      'The \'schedule alarms\' permission will be requested to send the reminder at a random moment or at your preferred time.';
+      'Ứng dụng sẽ yêu cầu quyền đặt báo thức để gửi lời nhắc vào thời điểm ngẫu nhiên hoặc thời gian bạn chọn.';
 
   @override
-  String get settingsDailyReminderTitle => 'Daily Reminder';
+  String get settingsDailyReminderTitle => 'Lời nhắc hằng ngày';
 
   @override
-  String get settingsOnThisDayDescription => 'Revisit past memories';
+  String get settingsOnThisDayDescription => 'Xem lại những kỷ niệm cũ';
 
   @override
-  String get settingsDailyReminderDescription => 'A gentle reminder each day';
+  String get settingsDailyReminderDescription => 'Lời nhắc nhẹ nhàng mỗi ngày';
 
   @override
-  String get settingsReminderTime => 'Reminder Time';
+  String get settingsReminderTime => 'Giờ nhắc';
 
   @override
-  String get settingsFixedReminderTimeTitle => 'Fixed Reminder Time';
+  String get settingsFixedReminderTimeTitle => 'Giờ nhắc cố định';
 
   @override
   String get settingsFixedReminderTimeDescription =>
-      'Pick a fixed time for the reminder';
+      'Chọn thời gian cố định để nhận lời nhắc';
 
   @override
-  String get settingsAlwaysSendReminderTitle => 'Always Send Reminder';
+  String get settingsAlwaysSendReminderTitle => 'Luôn gửi lời nhắc';
 
   @override
   String get settingsAlwaysSendReminderDescription =>
-      'Send reminder even if a log was already started';
+      'Gửi lời nhắc ngay cả khi bạn đã bắt đầu viết nhật ký';
 
   @override
-  String get settingsCustomizeNotificationTitle => 'Customize Notifications';
+  String get settingsCustomizeNotificationTitle => 'Tùy chỉnh thông báo';
 
   @override
-  String get settingsTemplatesTitle => 'Templates';
+  String get settingsTemplatesTitle => 'Mẫu nhật ký';
 
   @override
-  String get settingsDefaultTemplate => 'Default Template';
+  String get settingsDefaultTemplate => 'Mẫu mặc định';
 
   @override
-  String get manageTemplates => 'Manage Templates';
+  String get manageTemplates => 'Quản lý mẫu';
 
   @override
-  String get addTemplate => 'Add a Template';
+  String get addTemplate => 'Thêm mẫu';
 
   @override
-  String get newTemplate => 'New Template';
+  String get newTemplate => 'Mẫu mới';
 
   @override
-  String get noTemplateTitle => 'None';
+  String get noTemplateTitle => 'Không có';
 
   @override
-  String get noTemplatesDescription => 'No templates created yet…';
+  String get noTemplatesDescription => 'Chưa tạo mẫu nào…';
 
   @override
-  String get templateVariableTime => 'Time';
+  String get templateVariableTime => 'Thời gian';
 
   @override
-  String get templateDefaultTimestampTitle => 'Timestamp';
+  String get templateDefaultTimestampTitle => 'Mốc thời gian';
 
   @override
   String templateDefaultTimestampBody(Object date, Object time) {
@@ -462,115 +456,115 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get templateDefaultSummaryTitle => 'Day Summary';
+  String get templateDefaultSummaryTitle => 'Tổng kết ngày';
 
   @override
-  String get templateDefaultSummaryBody => '### Summary\n- \n\n### Quote\n> ';
+  String get templateDefaultSummaryBody =>
+      '### Tổng kết\n- \n\n### Trích dẫn\n> ';
 
   @override
-  String get templateDefaultReflectionTitle => 'Reflection';
+  String get templateDefaultReflectionTitle => 'Chiêm nghiệm';
 
   @override
   String get templateDefaultReflectionBody =>
-      '### What did you enjoy about today?\n- \n\n### What are you thankful for?\n- \n\n### What are you looking forward to?\n- ';
+      '### Điều gì khiến bạn vui hôm nay?\n- \n\n### Bạn biết ơn điều gì?\n- \n\n### Bạn đang mong chờ điều gì?\n- ';
 
   @override
-  String get settingsTagsTitle => 'Tags';
+  String get settingsTagsTitle => 'Thẻ';
 
   @override
-  String get manageTags => 'Manage Tags';
+  String get manageTags => 'Quản lý thẻ';
 
   @override
-  String get tagTypeLabelTitle => 'Label';
+  String get tagTypeLabelTitle => 'Nhãn';
 
   @override
-  String get tagTypeTrackerTitle => 'Tracker';
+  String get tagTypeTrackerTitle => 'Chỉ số theo dõi';
 
   @override
-  String get nameHint => 'Name';
+  String get nameHint => 'Tên';
 
   @override
-  String get tagColorLabel => 'Color';
+  String get tagColorLabel => 'Màu sắc';
 
   @override
-  String get iconPickerTitle => 'Choose Icon';
+  String get iconPickerTitle => 'Chọn biểu tượng';
 
   @override
-  String get iconPickerIconsTab => 'Icons';
+  String get iconPickerIconsTab => 'Biểu tượng';
 
   @override
-  String get iconPickerCustomTab => 'Custom';
+  String get iconPickerCustomTab => 'Tùy chỉnh';
 
   @override
-  String get iconPickerSearchHint => 'Search icons…';
+  String get iconPickerSearchHint => 'Tìm biểu tượng…';
 
   @override
-  String get colorPickerTitle => 'Choose Color';
+  String get colorPickerTitle => 'Chọn màu';
 
   @override
-  String get colorPickerPaletteTab => 'Colors';
+  String get colorPickerPaletteTab => 'Bảng màu';
 
   @override
-  String get iconGroupMoodPeople => 'Mood & People';
+  String get iconGroupMoodPeople => 'Tâm trạng và con người';
 
   @override
-  String get iconGroupHealth => 'Health';
+  String get iconGroupHealth => 'Sức khỏe';
 
   @override
-  String get iconGroupWorkFinance => 'Work & Finance';
+  String get iconGroupWorkFinance => 'Công việc và tài chính';
 
   @override
-  String get iconGroupHabitsGoals => 'Habits & Goals';
+  String get iconGroupHabitsGoals => 'Thói quen và mục tiêu';
 
   @override
-  String get iconGroupNature => 'Nature';
+  String get iconGroupNature => 'Thiên nhiên';
 
   @override
-  String get iconGroupFoodDrink => 'Food & Drink';
+  String get iconGroupFoodDrink => 'Ăn uống';
 
   @override
-  String get iconGroupHome => 'Home';
+  String get iconGroupHome => 'Nhà cửa';
 
   @override
-  String get iconGroupTravel => 'Travel';
+  String get iconGroupTravel => 'Du lịch';
 
   @override
-  String get iconGroupSymbols => 'Symbols';
+  String get iconGroupSymbols => 'Ký hiệu';
 
   @override
-  String get tagCategoryLabel => 'Category';
+  String get tagCategoryLabel => 'Danh mục';
 
   @override
-  String get tagLabel => 'Tag';
+  String get tagLabel => 'Thẻ';
 
   @override
-  String get tagCategoryUncategorized => 'Uncategorized';
+  String get tagCategoryUncategorized => 'Chưa phân loại';
 
   @override
-  String get newCategoryTitle => 'New Category';
+  String get newCategoryTitle => 'Danh mục mới';
 
   @override
-  String get shareButtonLabel => 'Share';
+  String get shareButtonLabel => 'Chia sẻ';
 
   @override
-  String get importErrorDescription => 'Failed to import file!';
+  String get importErrorDescription => 'Không thể nhập tệp!';
 
   @override
-  String get exportErrorDescription => 'Failed to export file!';
+  String get exportErrorDescription => 'Không thể xuất tệp!';
 
   @override
-  String get deleteTitle => 'Delete';
+  String get deleteTitle => 'Xóa';
 
   @override
   String deleteTagMessage(num count, Object name) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: ' It is used in $count logs.',
-      one: ' It is used in 1 log.',
+      other: ' Thẻ này đang được dùng trong $count bài nhật ký.',
       zero: '',
     );
-    return 'Delete \"$name\"?$_temp0';
+    return 'Xóa \"$name\"?$_temp0';
   }
 
   @override
@@ -578,301 +572,301 @@ class AppLocalizationsVi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: ' Its $count tags will also be deleted.',
-      one: ' Its 1 tag will also be deleted.',
+      other: ' Toàn bộ $count thẻ trong danh mục cũng sẽ bị xóa.',
       zero: '',
     );
-    return 'Delete \"$name\"?$_temp0';
+    return 'Xóa \"$name\"?$_temp0';
   }
 
   @override
   String deleteTemplateMessage(Object name) {
-    return 'Delete \"$name\"?';
+    return 'Xóa \"$name\"?';
   }
 
   @override
-  String get filterTagsTitle => 'Filter';
+  String get filterTagsTitle => 'Bộ lọc';
 
   @override
-  String get tagFilterModeAny => 'Any Tag';
+  String get tagFilterModeAny => 'Bất kỳ thẻ nào';
 
   @override
-  String get tagFilterModeAll => 'All Tags';
+  String get tagFilterModeAll => 'Tất cả các thẻ';
 
   @override
-  String get clearAllFilters => 'Clear All';
+  String get clearAllFilters => 'Xóa bộ lọc';
 
   @override
-  String get noTagsFilterLabel => 'No Tags';
+  String get noTagsFilterLabel => 'Không có thẻ';
 
   @override
-  String get addTagsTitle => 'Add Tags';
+  String get addTagsTitle => 'Thêm thẻ';
 
   @override
-  String get addTagsSearchHint => 'Search tags…';
+  String get addTagsSearchHint => 'Tìm thẻ…';
 
   @override
-  String get tagPickerSortManualLabel => 'Manual order';
+  String get tagPickerSortManualLabel => 'Thứ tự thủ công';
 
   @override
-  String get tagPickerSortUsageLabel => 'Sort by usage';
+  String get tagPickerSortUsageLabel => 'Theo mức độ sử dụng';
 
   @override
-  String get tagFavoriteName => 'Favorite';
+  String get tagFavoriteName => 'Yêu thích';
 
   @override
-  String get tagEnergyName => 'Energy';
+  String get tagEnergyName => 'Năng lượng';
 
   @override
-  String get tagCategoryActivitiesName => 'Activities';
+  String get tagCategoryActivitiesName => 'Hoạt động';
 
   @override
-  String get tagExerciseName => 'Exercise';
+  String get tagExerciseName => 'Tập thể dục';
 
   @override
-  String get tagSocializingName => 'Socializing';
+  String get tagSocializingName => 'Giao lưu';
 
   @override
-  String get tagHobbyName => 'Hobby';
+  String get tagHobbyName => 'Sở thích';
 
   @override
-  String get tagEntertainmentName => 'Entertainment';
+  String get tagEntertainmentName => 'Giải trí';
 
   @override
-  String get tagDiningName => 'Dining';
+  String get tagDiningName => 'Ăn uống';
 
   @override
-  String get tagChoresName => 'Chores';
+  String get tagChoresName => 'Việc nhà';
 
   @override
-  String get tagCategoryEmotionsName => 'Emotions';
+  String get tagCategoryEmotionsName => 'Cảm xúc';
 
   @override
-  String get tagExcitedName => 'Excited';
+  String get tagExcitedName => 'Hào hứng';
 
   @override
-  String get tagGratefulName => 'Grateful';
+  String get tagGratefulName => 'Biết ơn';
 
   @override
-  String get tagCalmName => 'Calm';
+  String get tagCalmName => 'Bình yên';
 
   @override
-  String get tagTiredName => 'Tired';
+  String get tagTiredName => 'Mệt mỏi';
 
   @override
-  String get tagAnxiousName => 'Anxious';
+  String get tagAnxiousName => 'Lo lắng';
 
   @override
-  String get tagAnnoyedName => 'Annoyed';
+  String get tagAnnoyedName => 'Bực bội';
 
   @override
   String get welcomeLogBodyText =>
-      '## Welcome to Daily You\n\n> Every day is worth remembering, capture it!\n\n**Daily You** is free, [open source](https://github.com/Demizo/Daily_You), and community supported. Built around the belief that your diary should be yours, not a product:\n\n- No ads\n- No locked features\n- No tracking or data collection\n\nWhether you\'re journaling, reflecting, or just noting what made you smile, **Daily You** gives you a private space that\'s _truly your own_.';
+      '## Chào mừng bạn đến với Adonis\n\n> Mỗi ngày đều đáng nhớ, hãy lưu giữ nhé!\n\n**Adonis** là ứng dụng miễn phí, [mã nguồn mở](https://github.com/Demizo/Daily_You) và được cộng đồng hỗ trợ. Chúng tôi tin rằng nhật ký phải thuộc về bạn, không phải là một sản phẩm để kinh doanh:\n\n- Không quảng cáo\n- Không khóa tính năng\n- Không theo dõi hay thu thập dữ liệu\n\nDù bạn viết nhật ký, chiêm nghiệm hay chỉ ghi lại điều khiến mình mỉm cười, **Adonis** luôn dành cho bạn một không gian riêng tư _thực sự thuộc về bạn_.';
 
   @override
-  String get settingsStorageTitle => 'Storage & Sync';
+  String get settingsStorageTitle => 'Lưu trữ và đồng bộ';
 
   @override
-  String get settingsImageQuality => 'Image Quality';
+  String get settingsImageQuality => 'Chất lượng ảnh';
 
   @override
-  String get settingsMediaQualityTitle => 'Media Quality';
+  String get settingsMediaQualityTitle => 'Chất lượng ảnh, âm thanh và video';
 
   @override
-  String get imageQualityHigh => 'High';
+  String get imageQualityHigh => 'Cao';
 
   @override
-  String get imageQualityMedium => 'Medium';
+  String get imageQualityMedium => 'Trung bình';
 
   @override
-  String get imageQualityLow => 'Low';
+  String get imageQualityLow => 'Thấp';
 
   @override
-  String get imageQualityNoCompression => 'No Compression';
+  String get imageQualityNoCompression => 'Không nén';
 
   @override
-  String get settingsStorageUsage => 'Storage Usage';
+  String get settingsStorageUsage => 'Dung lượng đã dùng';
 
   @override
-  String get settingsLogFolder => 'Log Folder';
+  String get settingsLogFolder => 'Thư mục nhật ký';
 
   @override
-  String get settingsImageFolder => 'Image Folder';
+  String get settingsImageFolder => 'Thư mục ảnh';
 
   @override
-  String get settingsExternalSyncTitle => 'Sync with External Location';
+  String get settingsExternalSyncTitle => 'Đồng bộ với vị trí bên ngoài';
 
   @override
-  String get chooseFolderHint => 'Choose a folder';
+  String get chooseFolderHint => 'Chọn thư mục';
 
   @override
-  String get warningTitle => 'Warning';
+  String get warningTitle => 'Cảnh báo';
 
   @override
   String get logFolderWarningDescription =>
-      'The selected folder already contains a \'daily_you.db\' file, it will be used to overwrite your existing logs!';
+      'Thư mục đã chọn có tệp \'daily_you.db\'. Dữ liệu trong tệp này sẽ ghi đè các bài nhật ký hiện có của bạn!';
 
   @override
-  String get errorTitle => 'Error';
+  String get errorTitle => 'Lỗi';
 
   @override
-  String get logFolderErrorDescription => 'Failed to change log folder!';
+  String get logFolderErrorDescription => 'Không thể đổi thư mục nhật ký!';
 
   @override
-  String get imageFolderErrorDescription => 'Failed to change image folder!';
+  String get imageFolderErrorDescription => 'Không thể đổi thư mục ảnh!';
 
   @override
-  String get syncErrorDescription =>
-      'Failed to sync with the external location!';
+  String get syncErrorDescription => 'Không thể đồng bộ với vị trí bên ngoài!';
 
   @override
-  String get backupErrorDescription => 'Failed to create backup!';
+  String get backupErrorDescription => 'Không thể tạo bản sao lưu!';
 
   @override
-  String get restoreErrorDescription => 'Failed to restore backup!';
+  String get restoreErrorDescription => 'Không thể khôi phục bản sao lưu!';
 
   @override
-  String get settingsBackupRestoreTitle => 'Backup & Restore';
+  String get settingsBackupRestoreTitle => 'Sao lưu và khôi phục';
 
   @override
-  String get settingsBackup => 'Backup';
+  String get settingsBackup => 'Sao lưu';
 
   @override
-  String get settingsRestore => 'Restore';
+  String get settingsRestore => 'Khôi phục';
 
   @override
   String get settingsRestorePromptDescription =>
-      'Restoring a backup will overwrite your existing data!';
+      'Khôi phục bản sao lưu sẽ ghi đè dữ liệu hiện có của bạn!';
 
   @override
-  String get settingsBackupPasswordProtect => 'Password Protect Backups';
+  String get settingsBackupPasswordProtect =>
+      'Bảo vệ bản sao lưu bằng mật khẩu';
 
   @override
-  String get backupEncryptedTitle => 'Encrypted Backup';
+  String get backupEncryptedTitle => 'Bản sao lưu được mã hóa';
 
   @override
-  String get backupEncryptedContent => 'This backup is password protected.';
+  String get backupEncryptedContent =>
+      'Bản sao lưu này được bảo vệ bằng mật khẩu.';
 
   @override
-  String get settingsAutoBackup => 'Automatic Backups';
+  String get settingsAutoBackup => 'Sao lưu tự động';
 
   @override
-  String get settingsAutoBackupLocation => 'Backup Location';
+  String get settingsAutoBackupLocation => 'Vị trí sao lưu';
 
   @override
-  String get settingsAutoBackupInterval => 'Backup Interval';
+  String get settingsAutoBackupInterval => 'Chu kỳ sao lưu';
 
   @override
-  String get settingsAutoBackupIntervalDaily => 'Daily';
+  String get settingsAutoBackupIntervalDaily => 'Hằng ngày';
 
   @override
-  String get settingsAutoBackupIntervalWeekly => 'Weekly';
+  String get settingsAutoBackupIntervalWeekly => 'Hằng tuần';
 
   @override
-  String get settingsAutoBackupIntervalMonthly => 'Monthly';
+  String get settingsAutoBackupIntervalMonthly => 'Hằng tháng';
 
   @override
-  String get settingsAutoBackupMaxCount => 'Backups To Keep';
+  String get settingsAutoBackupMaxCount => 'Số bản sao lưu giữ lại';
 
   @override
-  String get settingsAutoBackupRequireCharging => 'Only While Charging';
+  String get settingsAutoBackupRequireCharging => 'Chỉ khi đang sạc';
 
   @override
   String settingsBackupLast(Object time) {
-    return 'Last backup $time';
+    return 'Sao lưu lần cuối: $time';
   }
 
   @override
-  String get settingsBackupNever => 'Never backed up';
+  String get settingsBackupNever => 'Chưa từng sao lưu';
 
   @override
   String settingsAutoBackupNext(Object time) {
-    return 'Next backup $time';
+    return 'Lần sao lưu tiếp theo: $time';
   }
 
   @override
-  String get settingsAutoBackupKeepAll => 'All';
+  String get settingsAutoBackupKeepAll => 'Tất cả';
 
   @override
-  String get autoBackupFailedTitle => 'Backup Failed';
+  String get autoBackupFailedTitle => 'Sao lưu thất bại';
 
   @override
   String tranferStatus(Object percent) {
-    return 'Transferring… $percent%';
+    return 'Đang truyền… $percent%';
   }
 
   @override
   String creatingBackupStatus(Object percent) {
-    return 'Creating Backup… $percent%';
+    return 'Đang tạo bản sao lưu… $percent%';
   }
 
   @override
   String restoringBackupStatus(Object percent) {
-    return 'Restoring Backup… $percent%';
+    return 'Đang khôi phục bản sao lưu… $percent%';
   }
 
   @override
   String encryptingBackupStatus(Object percent) {
-    return 'Encrypting Backup… $percent%';
+    return 'Đang mã hóa bản sao lưu… $percent%';
   }
 
   @override
   String decryptingBackupStatus(Object percent) {
-    return 'Decrypting Backup… $percent%';
+    return 'Đang giải mã bản sao lưu… $percent%';
   }
 
   @override
-  String get cleanUpStatus => 'Cleaning Up…';
+  String get cleanUpStatus => 'Đang dọn dẹp…';
 
   @override
   String migratingImagesStatus(Object current, Object total) {
-    return 'Migrating photos… $current/$total';
+    return 'Đang di chuyển ảnh… $current/$total';
   }
 
   @override
-  String get settingsExport => 'Export';
+  String get settingsExport => 'Xuất dữ liệu';
 
   @override
-  String get settingsExportToAnotherFormat => 'Export To Another Format';
+  String get settingsExportToAnotherFormat => 'Xuất sang định dạng khác';
 
   @override
   String get settingsExportFormatDescription =>
-      'This should not be used as a backup!';
+      'Không dùng tệp xuất này thay cho bản sao lưu!';
 
   @override
-  String get exportLogs => 'Export Logs';
+  String get exportLogs => 'Xuất nhật ký';
 
   @override
-  String get exportImages => 'Export Images';
+  String get exportImages => 'Xuất ảnh';
 
   @override
-  String get exportIncludeTitle => 'Include';
+  String get exportIncludeTitle => 'Nội dung xuất';
 
   @override
-  String get settingsImport => 'Import';
+  String get settingsImport => 'Nhập dữ liệu';
 
   @override
-  String get settingsImportFromAnotherApp => 'Import From Another App';
+  String get settingsImportFromAnotherApp => 'Nhập từ ứng dụng khác';
 
   @override
   String get settingsTranslateCallToAction =>
-      'Everyone should have access to a journal!';
+      'Ai cũng xứng đáng có một cuốn nhật ký!';
 
   @override
-  String get settingsHelpTranslate => 'Help Translate';
+  String get settingsHelpTranslate => 'Đóng góp bản dịch';
 
   @override
-  String get importLogs => 'Import Logs';
+  String get importLogs => 'Nhập nhật ký';
 
   @override
-  String get importImages => 'Import Images';
+  String get importImages => 'Nhập ảnh';
 
   @override
-  String get logFormatTitle => 'Choose Format';
+  String get logFormatTitle => 'Chọn định dạng';
 
   @override
   String get logFormatDescription =>
-      'Another app\'s format may not support all features. Please report any issues since third party formats may change at any time. This will not impact existing logs!';
+      'Định dạng của ứng dụng khác có thể không hỗ trợ đầy đủ tính năng. Hãy báo lỗi nếu gặp sự cố vì các định dạng của bên thứ ba có thể thay đổi bất kỳ lúc nào. Thao tác này không ảnh hưởng đến các bài nhật ký hiện có!';
 
   @override
   String get formatDailyYouJson => 'Daily You (JSON)';
@@ -902,94 +896,94 @@ class AppLocalizationsVi extends AppLocalizations {
   String get formatMarkdown => 'Markdown';
 
   @override
-  String get settingsDeleteAllLogsTitle => 'Delete All Logs';
+  String get settingsDeleteAllLogsTitle => 'Xóa toàn bộ nhật ký';
 
   @override
   String get settingsDeleteAllLogsDescription =>
-      'Do you want to delete all of your logs?';
+      'Bạn có muốn xóa toàn bộ bài nhật ký không?';
 
   @override
   String settingsDeleteAllLogsPrompt(Object prompt) {
-    return 'Enter \'$prompt\' to confirm. This cannot be undone!';
+    return 'Nhập \'$prompt\' để xác nhận. Thao tác này không thể hoàn tác!';
   }
 
   @override
-  String get settingsLanguageTitle => 'Language';
+  String get settingsLanguageTitle => 'Ngôn ngữ';
 
   @override
-  String get settingsAppLanguageTitle => 'App Language';
+  String get settingsAppLanguageTitle => 'Ngôn ngữ ứng dụng';
 
   @override
-  String get settingsOverrideAppLanguageTitle => 'Override App Language';
+  String get settingsOverrideAppLanguageTitle => 'Tùy chọn ngôn ngữ ứng dụng';
 
   @override
-  String get settingsSecurityTitle => 'Security';
+  String get settingsSecurityTitle => 'Bảo mật';
 
   @override
-  String get settingsSecurityRequirePassword => 'Require Password';
+  String get settingsSecurityRequirePassword => 'Yêu cầu mật khẩu';
 
   @override
-  String get settingsSecurityEnterPassword => 'Enter Password';
+  String get settingsSecurityEnterPassword => 'Nhập mật khẩu';
 
   @override
-  String get settingsSecuritySetPassword => 'Set Password';
+  String get settingsSecuritySetPassword => 'Đặt mật khẩu';
 
   @override
-  String get settingsSecurityChangePassword => 'Change Password';
+  String get settingsSecurityChangePassword => 'Đổi mật khẩu';
 
   @override
-  String get settingsSecurityPassword => 'Password';
+  String get settingsSecurityPassword => 'Mật khẩu';
 
   @override
-  String get settingsSecurityConfirmPassword => 'Confirm Password';
+  String get settingsSecurityConfirmPassword => 'Xác nhận mật khẩu';
 
   @override
-  String get settingsSecurityOldPassword => 'Old Password';
+  String get settingsSecurityOldPassword => 'Mật khẩu cũ';
 
   @override
-  String get settingsSecurityIncorrectPassword => 'Incorrect Password';
+  String get settingsSecurityIncorrectPassword => 'Mật khẩu không đúng';
 
   @override
-  String get settingsSecurityPasswordsDoNotMatch => 'Passwords do not match';
+  String get settingsSecurityPasswordsDoNotMatch => 'Mật khẩu không khớp';
 
   @override
-  String get requiredPrompt => 'Required';
+  String get requiredPrompt => 'Bắt buộc';
 
   @override
-  String get settingsSecurityBiometricUnlock => 'Biometric Unlock';
+  String get settingsSecurityBiometricUnlock => 'Mở khóa bằng sinh trắc học';
 
   @override
-  String get unlockAppPrompt => 'Unlock the app';
+  String get unlockAppPrompt => 'Mở khóa ứng dụng';
 
   @override
-  String get settingsAboutTitle => 'About';
+  String get settingsAboutTitle => 'Giới thiệu';
 
   @override
-  String get settingsVersion => 'Version';
+  String get settingsVersion => 'Phiên bản';
 
   @override
-  String get settingsLicense => 'License';
+  String get settingsLicense => 'Giấy phép';
 
   @override
   String get licenseGPLv3 => 'GPL-3.0';
 
   @override
-  String get settingsSourceCode => 'Source Code';
+  String get settingsSourceCode => 'Mã nguồn';
 
   @override
-  String get settingsOpenSourceLicenses => 'Open Source Licenses';
+  String get settingsOpenSourceLicenses => 'Giấy phép mã nguồn mở';
 
   @override
-  String get settingsMadeWithLove => 'Made with ❤️';
+  String get settingsMadeWithLove => 'Được tạo nên bằng ❤️';
 
   @override
-  String get settingsConsiderSupporting => 'consider supporting';
+  String get settingsConsiderSupporting => 'hãy cân nhắc ủng hộ';
 
   @override
-  String get imagesTitle => 'Images';
+  String get imagesTitle => 'Ảnh';
 
   @override
-  String get audioTitle => 'Audio';
+  String get audioTitle => 'Âm thanh';
 
   @override
   String get videoTitle => 'Video';
@@ -998,50 +992,55 @@ class AppLocalizationsVi extends AppLocalizations {
   String get tagMoodTitle => 'Tâm trạng';
 
   @override
-  String get calendarTagDisplayLabel => 'Tag';
+  String get calendarTagDisplayLabel => 'Thẻ';
 
   @override
-  String get selectTagTitle => 'Select Tag';
+  String get selectTagTitle => 'Chọn thẻ';
 
   @override
-  String get labelPresentLabel => 'Present';
+  String get labelPresentLabel => 'Có';
 
   @override
-  String get labelAbsentLabel => 'Absent';
+  String get labelAbsentLabel => 'Không';
 
   @override
-  String get labelCoverageLabel => 'Coverage';
+  String get labelCoverageLabel => 'Tỷ lệ xuất hiện';
 
   @override
   String chartDistributionTitle(Object tag) {
-    return '$tag Distribution';
+    return 'Phân bố $tag';
   }
 
   @override
-  String get shareAddToLogPickerTitle => 'Choose a log';
+  String get shareAddToLogPickerTitle => 'Chọn bài nhật ký';
 
   @override
-  String get attachmentAddErrorDescription => 'Failed to add attachment!';
+  String get attachmentAddErrorDescription => 'Không thể thêm tệp đính kèm!';
 
   @override
-  String get attachmentLoadFailed => 'Could not open this attachment';
+  String get attachmentLoadFailed => 'Không thể mở tệp đính kèm này';
 
   @override
-  String get attachmentNoAppToOpen => 'No app can open this attachment';
+  String get attachmentNoAppToOpen =>
+      'Không có ứng dụng phù hợp để mở tệp đính kèm này';
 
   @override
-  String get recorderDiscardTitle => 'Discard recording?';
+  String get recorderDiscardTitle => 'Hủy bản ghi âm?';
 
   @override
-  String get recorderDiscardDescription => 'This recording will be deleted.';
+  String get recorderDiscardDescription => 'Bản ghi âm này sẽ bị xóa.';
 
   @override
-  String get recorderDiscardAction => 'Discard';
+  String get recorderDiscardAction => 'Hủy bản ghi âm';
 
   @override
   String get recorderPermissionDenied =>
-      'Microphone permission is required to record audio';
+      'Cần cấp quyền truy cập micrô để ghi âm';
 
   @override
-  String get recorderErrorDescription => 'Failed to record audio!';
+  String get recorderErrorDescription => 'Không thể ghi âm!';
+
+  @override
+  String get modifiedVersionNotice =>
+      'Adonis là bản sửa đổi từ Daily You của Demizo và cộng đồng đóng góp, không phải ứng dụng chính thức. Phát hành theo GPL-3.0 cùng các điều khoản bổ sung của dự án gốc.';
 }

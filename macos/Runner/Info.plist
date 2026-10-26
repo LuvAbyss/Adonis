@@ -27,7 +27,7 @@
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Daily You uses the microphone to record audio attachments for your entries.</string>
+	<string>Adonis cần truy cập micrô để ghi âm và đính kèm vào bài nhật ký của bạn.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
